@@ -1,13 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Jatin Bhuva | React Native Developer</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script src="app.js" type="module"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jatin Bhuva | Software Engineer</title>
+  <link rel="stylesheet" href="styles.css" />
+<!-- Add this line in your <head> before your script.js -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <img src="https://api.dicebear.com/7.x/bottts/svg?seed=JatinBhuva" alt="Jatin Bhuva" class="profile" style="box-shadow:0 4px 24px #06b6d4a0;">
+      <h1>Jatin Bhuva</h1>
+      <p class="subtitle">React Native Developer | Android Enthusiast | Open Source Contributor</p>
+      <a href="assets/resume.pdf" download class="btn">Download Resume</a>
+      <div style="margin-top:1.5rem;">
+        <a href="mailto:jatinhbhuva@gmail.com" class="btn" style="background:transparent;border:1px solid var(--accent);color:var(--accent);margin-right:0.5rem;">Email</a>
+        <a href="https://github.com/yourusername" target="_blank" class="btn" style="background:transparent;border:1px solid var(--accent);color:var(--accent);margin-right:0.5rem;">GitHub</a>
+        <a href="https://linkedin.com/in/jatin-bhuva" target="_blank" class="btn" style="background:transparent;border:1px solid var(--accent);color:var(--accent);">LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container" style="display:flex;flex-wrap:wrap;align-items:center;gap:2rem;">
+<img src="https://ui-avatars.com/api/?name=Jatin+Bhuva&background=06b6d4&color=fff&size=256" alt="Jatin Bhuva" class="profile" style="box-shadow:0 4px 24px #06b6d4a0;">
+      <div>
+        <h2>👋 About Me</h2>
+        <p>
+          Hi! I'm Jatin, a passionate Mobile App Developer with 3+ years of experience in React Native, Android, and cross-platform architecture. I love building performant, secure, and delightful user experiences.
+        </p>
+        <ul>
+          <li>💡 Open Source Contributor</li>
+          <li>🏆 1800+ Stack Overflow reputation</li>
+          <li>🛠️ Created VS Code extension for React Native snippets</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2>🛠️ Skills</h2>
+      <ul class="skill-list">
+        <li>React Native</li>
+        <li>JavaScript</li>
+        <li>TypeScript</li>
+        <li>Kotlin</li>
+        <li>Node.js</li>
+        <li>Firebase</li>
+        <li>Redux Toolkit</li>
+        <li>GraphQL</li>
+        <li>MQTT</li>
+        <li>Skia</li>
+        <li>Git & GitHub</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2>🚀 Projects</h2>
+      <div class="card">
+        <h3>Secure React Native App</h3>
+        <p>Implemented USB Debugging & Developer Option detection using TurboModules + Codegen.</p>
+      </div>
+      <div class="card">
+        <h3>Finance Management App</h3>
+        <p>Banking + Investing + Financial Education app with auto investment features.</p>
+      </div>
+      <div class="card">
+        <h3>IoT Smart Home</h3>
+        <p>Monitors solar output, remotely controls AC/geyser, and manages battery sharing.</p>
+      </div>
+      <div class="card">
+        <h3>Event & Appointment</h3>
+        <p>App for scheduling digital & physical events, reminders, real-time chat, and phonebook sync.</p>
+      </div>
+      <div class="card">
+        <h3>Logistics Tracker</h3>
+        <p>Shipment tracking, contract management, and instant delivery updates.</p>
+      </div>
+      <div class="card">
+        <h3>PDF Generator</h3>
+        <p>Converts images to PDF with filters, orientation, digital signature support.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>📬 Contact Me</h2>
+      <form class="contact-form">
+         <input type="text" name="user_name" placeholder="Your Name" required />
+  <input type="email" name="user_email" placeholder="Your Email" required />
+  <textarea name="message" placeholder="Your Message" required></textarea>
+  <button type="submit" class="btn">Send Message</button>
+      </form>
+      <p style="margin-top:1rem;">Or email: <a href="mailto:jatinhbhuva@gmail.com">jatinhbhuva@gmail.com</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Jatin Bhuva. All rights reserved.</p>
+  </footer>
+</body>
 </html>
