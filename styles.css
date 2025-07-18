@@ -106,7 +106,6 @@ footer {
   resize: none;
 }
 
-.contact-form input:focus,
 .contact-form textarea {
   min-height: 120px;         /* Makes the message box bigger */
   max-height: 300px;
