@@ -1,76 +1,83 @@
-# React + TypeScript + Vite
+# Jatin Bhuva | Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio site built with React + TypeScript + Vite.
 
-Currently, two official plugins are available:
+- Live: `https://jatinbhuva.github.io/portfolio/`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech
 
-## GitHub Pages
+- React (client)
+- TypeScript
+- Vite
+- CSS Modules (component/section styles)
 
-This repo deploys the production build (`dist/`) to GitHub Pages via `.github/workflows/static.yml`.
+## Scripts
 
-- Site URL (project pages): `https://jatinbhuva.github.io/portfolio/`
-- `/src/main.tsx` is a dev entry (from `index.html`) and won’t work if you deploy the repo root instead of the build output.
+```bash
+# install
+yarn install
 
-## Expanding the ESLint configuration
+# dev server
+yarn dev
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# production build (outputs to dist/)
+yarn build
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# preview production build locally
+yarn preview
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# lint
+yarn lint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## GitHub Pages (deployment rules)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This repo deploys the **production build** (`dist/`) to GitHub Pages via `.github/workflows/static.yml`.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Key rules:
+
+1. Do **not** deploy the repository root. The root `index.html` is a Vite dev entry that imports `/src/main.tsx` (that path will 404 on Pages).
+2. This is a **project pages** site, so the app is served from `/<repo>/` (here: `/portfolio/`).
+3. Any **absolute** asset path like `/some-file.jpg` points to `https://jatinbhuva.github.io/some-file.jpg` and will 404. Prefer `import.meta.env.BASE_URL` for public assets.
+
+## Static assets (how to reference images)
+
+You have two safe options:
+
+### 1) Put the file in `public/`
+
+`public/` files are copied as-is to the build output root. On GitHub Pages, prefix them with `BASE_URL`:
+
+```ts
+const portraitSrc = `${import.meta.env.BASE_URL}20260419_102433-IMG_STYLE~2.jpg`
+```
+
+### 2) Put the file in `src/assets/` and import it
+
+Vite will fingerprint and bundle it:
+
+```ts
+import portraitSrc from '../assets/portrait.jpg'
+```
+
+## Project structure
+
+```text
+.
+├─ .github/workflows/static.yml    # GitHub Pages deploy (builds + uploads dist/)
+├─ index.html                      # Vite HTML entry (dev)
+├─ public/                         # static files copied as-is
+├─ src/
+│  ├─ app/                         # app shell / layout
+│  ├─ components/                  # reusable UI components (CSS modules)
+│  ├─ data/                        # content (see src/data/portfolio.ts)
+│  ├─ hooks/                       # shared hooks
+│  ├─ sections/                    # page sections
+│  ├─ styles/                      # shared style helpers
+│  ├─ theme/                       # theme/tokens
+│  ├─ utils/                       # small utilities
+│  ├─ main.tsx                     # React entry point
+│  └─ index.css                    # global styles
+├─ vite.config.ts                  # Vite config (GitHub Pages base)
+└─ dist/                           # generated build output (do not edit)
 ```

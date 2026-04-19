@@ -17,7 +17,7 @@ export const portfolio: PortfolioData = {
     primaryCta: { label: 'View my work', href: '#work' },
     secondaryCta: { label: 'About me', href: '#expertise' },
     image: {
-      src: '/20260419_102433-IMG_STYLE~2.jpg',
+      src: `${import.meta.env.BASE_URL}20260419_102433-IMG_STYLE~2.jpg`,
       alt: 'Portrait of Jatin Bhuva',
     },
   },
