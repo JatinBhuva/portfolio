@@ -1,5 +1,5 @@
 .section {
-  padding: 8rem 0;
+  padding: 4rem 0;
   scroll-margin-top: calc(var(--nav-height) + 1.5rem);
 }
 

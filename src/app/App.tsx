@@ -9,6 +9,7 @@ import { ExpertiseSection } from '../sections/ExpertiseSection/ExpertiseSection'
 import { Footer } from '../sections/Footer/Footer'
 import { HeroSection } from '../sections/HeroSection/HeroSection'
 import { WorkSection } from '../sections/WorkSection/WorkSection'
+import { ScrollToTopFab } from '../components/ScrollToTopFab/ScrollToTopFab'
 import styles from './App.module.css'
 
 export default function App() {
@@ -32,8 +33,8 @@ export default function App() {
         <BlogSection />
         <ContactSection />
       </main>
+      <ScrollToTopFab />
       <Footer />
     </div>
   )
 }
-

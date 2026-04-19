@@ -1,5 +1,5 @@
 .section {
-  padding: 8rem 0;
+  padding: 4rem 0;
   background: var(--color-surface-container-low);
   color: var(--color-on-surface);
   scroll-margin-top: calc(var(--nav-height) + 1.5rem);

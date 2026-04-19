@@ -13,7 +13,7 @@ export const portfolio: PortfolioData = {
     heading: 'Building high-performance mobile experiences.',
     highlight: 'high-performance',
     description:
-      "Hi! I'm Jatin, a passionate Mobile App Developer with 3+ years of experience in React Native, Android, and cross-platform architecture. I love building performant, secure, and delightful user experiences.",
+      'A passionate and results-driven mobile app developer with 3+ years of experience designing, developing, and deploying high-quality React Native applications. I thrive in agile teams and love building scalable, user-first experiences across domains like social, finance, education, IoT, and healthcare.',
     primaryCta: { label: 'View my work', href: '#work' },
     secondaryCta: { label: 'About me', href: '#expertise' },
     image: {
@@ -30,7 +30,10 @@ export const portfolio: PortfolioData = {
         title: 'React Native',
         description:
           'Building complex UI/UX with smooth 60fps animations and platform-aware optimizations.',
-        icon: 'developer_mode_tv',
+        logo: {
+          src: 'https://reactnative.dev/img/header_logo.svg',
+          alt: 'React Native logo',
+        },
       },
       {
         title: 'TypeScript',
@@ -48,7 +51,65 @@ export const portfolio: PortfolioData = {
         title: 'Redux Toolkit',
         description:
           'Predictable state management for complex flows, offline data, and scalable feature ownership.',
-        icon: 'schema',
+        logo: {
+          src: 'https://redux-toolkit.js.org/img/redux_white.svg',
+          alt: 'Redux Toolkit (Redux) logo',
+          mode: 'light',
+        },
+      },
+    ],
+  },
+  workHistory: {
+    title: 'Work history',
+    description:
+      'A snapshot of the roles and responsibilities that shaped my approach to building reliable mobile products.',
+    items: [
+      {
+        company: 'TatvaSoft',
+        role: 'Software Engineer',
+        start: 'May 2023',
+        end: 'Present',
+        location: 'Ahmedabad, Gujarat, India',
+        summary: [
+          'Designing and developing a React Native application with various third‑party tools and libraries.',
+          'Spearheaded integrations including CometChat, Stream Chat, UAE PASS, and Firebase; worked with GraphQL, XState, MQTT, Skia, and AWS AppSync.',
+          'Collaborated in Agile sprints with cross‑functional teams to scope work and ship features on schedule.',
+        ],
+        projects: [
+          {
+            title: 'Healthcare Platform',
+            subtitle: 'Mobile app development',
+            images: [
+              {
+                src: `${import.meta.env.BASE_URL}work/healthcare/uae-pass-login.jpeg`,
+                alt: 'Healthcare platform login screen with UAE PASS sign-in',
+              },
+              {
+                src: `${import.meta.env.BASE_URL}work/healthcare/uae-pass-splash.jpeg`,
+                alt: 'UAE PASS splash screen',
+              },
+              {
+                src: `${import.meta.env.BASE_URL}work/healthcare/uae-pass-staging.jpeg`,
+                alt: 'UAE PASS staging sandbox verification screen',
+              },
+              {
+                src: `${import.meta.env.BASE_URL}work/healthcare/uae-pass-alert.jpeg`,
+                alt: 'UAE PASS login request alert screen',
+              },
+            ],
+            bullets: [
+              'Mobile UI development and product iteration in sprint cycles.',
+              'API integrations, unit test writing, and R&D on third‑party integrations.',
+              'Core modules: authentication (email/phone/UAE PASS), patient & doctor, appointments, prescriptions.',
+            ],
+          },
+        ],
+      },
+      {
+        company: 'Creole Studios',
+        role: 'Jr. Software Engineer',
+        start: 'May 2022',
+        end: 'May 2023',
       },
     ],
   },
@@ -56,6 +117,16 @@ export const portfolio: PortfolioData = {
     title: 'Selected Work',
     description: 'A curated showcase of mobile engineering excellence.',
     projects: [
+      {
+        title: 'Healthcare Platform',
+        description:
+          'React Native healthcare platform with UAE PASS authentication, third‑party chat integration, and a scalable module-based architecture for patient/doctor flows.',
+        tags: ['HEALTHCARE', 'REACT NATIVE', 'UAE PASS'],
+        image: {
+          src: `${import.meta.env.BASE_URL}work/healthcare/uae-pass-login.jpeg`,
+          alt: 'Healthcare platform login screen with UAE PASS sign-in',
+        },
+      },
       {
         title: 'Secure React Native App',
         description:
@@ -193,7 +264,12 @@ export const portfolio: PortfolioData = {
     title: 'Ready to build something amazing?',
     description:
       "I'm currently available for freelance projects and high-impact full-time roles in mobile engineering.",
-    email: 'jatinhbhuva@gmail.com',
+    email: 'bhuvajatin252@gmail.com',
+    emailjs: {
+      serviceId: 'jatin_mobile',
+      templateId: 'template_okjka8k',
+      publicKey: 'snKY5dHm9cA6QNvep',
+    },
     links: [
       { label: 'GitHub', href: 'https://github.com/JatinBhuva', icon: 'code' },
       {
@@ -210,7 +286,7 @@ export const portfolio: PortfolioData = {
       { label: 'GitHub', href: 'https://github.com/JatinBhuva' },
       { label: 'LinkedIn', href: 'https://linkedin.com/in/jatin-bhuva' },
       { label: 'Medium', href: 'https://medium.com/@jatinbhuva' },
-      { label: 'Email', href: 'mailto:jatinhbhuva@gmail.com' },
+      { label: 'Email', href: 'mailto:bhuvajatin252@gmail.com' },
     ],
     copyright: `© ${new Date().getFullYear()} JATIN BHUVA. ALL RIGHTS RESERVED.`,
   },

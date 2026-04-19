@@ -17,7 +17,25 @@ export type HeroContent = {
 export type StackItem = {
   title: string
   description: string
-  icon: string
+  icon?: string
+  logo?: { src: string; alt: string; mode?: 'light' | 'dark' }
+}
+
+export type WorkHistoryProject = {
+  title: string
+  subtitle?: string
+  bullets: string[]
+  images?: { src: string; alt: string }[]
+}
+
+export type WorkHistoryItem = {
+  company: string
+  role: string
+  start: string
+  end: string
+  location?: string
+  summary?: string[]
+  projects?: WorkHistoryProject[]
 }
 
 export type Project = {
@@ -59,11 +77,18 @@ export type SocialLink = {
   href: string
 }
 
+export type EmailJsConfig = {
+  serviceId: string
+  templateId: string
+  publicKey: string
+}
+
 export type PortfolioData = {
   brand: { name: string }
   nav: NavItem[]
   hero: HeroContent
   stack: { title: string; description: string; items: StackItem[] }
+  workHistory: { title: string; description: string; items: WorkHistoryItem[] }
   work: { title: string; description: string; projects: Project[] }
   community: {
     title: string
@@ -81,6 +106,7 @@ export type PortfolioData = {
     title: string
     description: string
     email: string
+    emailjs?: EmailJsConfig
     links: { label: string; href: string; icon: string }[]
   }
   footer: { tagline: string; links: SocialLink[]; copyright: string }

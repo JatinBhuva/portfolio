@@ -1,5 +1,5 @@
 .section {
-  padding: 8rem 0;
+  padding: 4rem 0;
   background: var(--color-surface-container-low);
   scroll-margin-top: calc(var(--nav-height) + 1.5rem);
 }
@@ -29,9 +29,33 @@
 .inner {
   position: relative;
   z-index: 1;
-  max-width: 48rem;
+  max-width: 72rem;
   margin: 0 auto;
-  text-align: center;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.left {
+  min-width: 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-fixed);
+  color: var(--color-on-primary-fixed);
+  font-weight: 900;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  margin-bottom: 1.5rem;
 }
 
 .title {
@@ -44,24 +68,144 @@
 }
 
 .description {
-  margin: 0 auto 2.75rem;
+  margin: 0 0 2.25rem;
   color: var(--color-on-surface-variant);
   line-height: 1.75;
   font-size: 1.1rem;
-  max-width: 42rem;
+  max-width: 44rem;
 }
 
 .actions {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  max-width: 100%;
+}
+
+.actions :global(a),
+.actions :global(button) {
+  align-self: flex-start;
+}
+
+.emailButton {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .iconLinks {
   display: flex;
   gap: 0.9rem;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+}
+
+.form {
+  background: var(--color-surface-container-lowest);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-outline-variant);
+  box-shadow: var(--shadow-card);
+  padding: 1.75rem 1.5rem;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.label {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  font-weight: 900;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  border-radius: 1.25rem;
+  border: 1px solid var(--color-outline-variant);
+  background: var(--color-surface);
+  color: var(--color-on-background);
+  padding: 0.95rem 1rem;
+  font: inherit;
+  outline: none;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 9.5rem;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-outline));
+  box-shadow: 0 0 0 4px rgba(70, 72, 212, 0.14);
+}
+
+.formFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.note {
+  margin: 0;
+  color: var(--color-on-surface-variant);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 34rem;
+  flex: 1 1 16rem;
+}
+
+.note[data-variant='success'] {
+  color: color-mix(in srgb, var(--color-primary) 55%, var(--color-on-surface));
+}
+
+.note[data-variant='error'] {
+  color: #d24c4c;
+}
+
+.note[data-variant='info'] {
+  color: var(--color-on-surface-variant);
+}
+
+.note[data-variant='info']::before {
+  content: '';
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: var(--radius-full);
+  border: 2px solid color-mix(in srgb, var(--color-primary) 35%, transparent);
+  border-top-color: var(--color-primary);
+  display: inline-block;
+  margin-right: 0.65rem;
+  vertical-align: -0.12rem;
+  animation: contact-spin 850ms linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .note[data-variant='info']::before {
+    animation: none;
+  }
+}
+
+@keyframes contact-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .iconButton {
@@ -88,11 +232,33 @@
 @media (min-width: 768px) {
   .actions {
     flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 0.9rem;
+  }
+
+  .fieldGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .formFooter {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
   }
 }
 
 @media (min-width: 1024px) {
   .card {
     padding: 5.5rem 6rem;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 3.25rem;
+  }
+
+  .form {
+    padding: 2.25rem 2.1rem;
   }
 }

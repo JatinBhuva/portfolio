@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import { Chip } from '../../components/Chip/Chip'
 import { Container } from '../../components/Container/Container'
 import { Icon } from '../../components/Icon/Icon'
@@ -79,6 +79,14 @@ const ProjectItem = memo(function ProjectItem({
 
 export function WorkSection() {
   const { work } = portfolio
+  const projects = useMemo(
+    () =>
+      work.projects.filter((project) => {
+        const title = project.title.toLowerCase()
+        return !title.includes('diamond') && !title.includes('quiz')
+      }),
+    [work.projects],
+  )
 
   return (
     <section className={styles.section} id="work">
@@ -86,10 +94,15 @@ export function WorkSection() {
         <div className={styles.header}>
           <h2 className={styles.title}>{work.title}</h2>
           <p className={styles.subtitle}>{work.description}</p>
+          <div className={styles.projectIndex} aria-label="Projects">
+            {projects.map((project) => (
+              <Chip key={project.title}>{project.title}</Chip>
+            ))}
+          </div>
         </div>
 
         <div className={styles.list}>
-          {work.projects.map((project, index) => (
+          {projects.map((project, index) => (
             <ProjectItem
               key={project.title}
               project={project}

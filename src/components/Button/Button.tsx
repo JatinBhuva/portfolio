@@ -24,6 +24,7 @@ type ButtonAsLink = CommonProps & {
 type ButtonAsButton = CommonProps & {
   href?: never
   onClick?: () => void
+  disabled?: boolean
   type?: 'button' | 'submit' | 'reset'
   target?: never
   rel?: never
@@ -64,6 +65,7 @@ export function Button({
   return (
     <button
       className={classes.join(' ')}
+      disabled={rest.disabled}
       onClick={rest.onClick}
       type={rest.type ?? 'button'}
     >
@@ -71,4 +73,3 @@ export function Button({
     </button>
   )
 }
-

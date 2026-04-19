@@ -1,8 +1,8 @@
 .section {
-  min-height: 54rem;
+  min-height: calc(100svh - var(--nav-height));
   display: flex;
   align-items: center;
-  padding: 4.5rem 0;
+  padding: 0;
   overflow: hidden;
 }
 
@@ -114,7 +114,7 @@
 }
 
 .portraitFrame::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -140,7 +140,7 @@
   will-change: filter, transform;
 }
 
-:root[data-theme='dark'] .portrait {
+:root[data-theme="dark"] .portrait {
   filter: saturate(0.72) contrast(1.06) brightness(0.92);
 }
 
@@ -185,6 +185,13 @@
   .media {
     margin-left: auto;
     justify-self: end;
+  }
+}
+
+@media (max-width: 700px) {
+  .section {
+    padding: 1.5rem 0;
+    min-height: auto;
   }
 }
 
