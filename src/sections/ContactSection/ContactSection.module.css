@@ -1,0 +1,98 @@
+.section {
+  padding: 8rem 0;
+  background: var(--color-surface-container-low);
+  scroll-margin-top: calc(var(--nav-height) + 1.5rem);
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-container-lowest);
+  padding: 4rem 2.25rem;
+  box-shadow: var(--shadow-ambient);
+  outline: 1px solid rgba(199, 196, 215, 0.15);
+}
+
+.glow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  background: rgba(70, 72, 212, 0.06);
+  filter: blur(46px);
+  transform: translate(30%, -40%);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 48rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 1.5rem;
+  font-family: var(--font-headline);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-size: clamp(2.1rem, 4.3vw, 3.25rem);
+  color: var(--color-on-background);
+}
+
+.description {
+  margin: 0 auto 2.75rem;
+  color: var(--color-on-surface-variant);
+  line-height: 1.75;
+  font-size: 1.1rem;
+  max-width: 42rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconLinks {
+  display: flex;
+  gap: 0.9rem;
+}
+
+.iconButton {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(118, 117, 134, 0.45);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition: background-color 160ms ease;
+}
+
+.iconButton:hover {
+  background: var(--color-surface-container);
+}
+
+.iconButton:focus-visible {
+  outline: 3px solid rgba(70, 72, 212, 0.45);
+  outline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .actions {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    padding: 5.5rem 6rem;
+  }
+}

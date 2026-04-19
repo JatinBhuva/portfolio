@@ -1,0 +1,209 @@
+.section {
+  padding: 8rem 0;
+  background: var(--color-surface-container-low);
+  color: var(--color-on-surface);
+  scroll-margin-top: calc(var(--nav-height) + 1.5rem);
+}
+
+.section {
+  --carousel-control-bg: color-mix(in srgb, var(--color-surface) 78%, transparent);
+  --carousel-control-border: color-mix(
+    in srgb,
+    var(--color-outline-variant) 55%,
+    transparent
+  );
+  --carousel-control-color: var(--color-on-background);
+}
+
+:root[data-theme='dark'] .section {
+  background: var(--color-ink);
+  color: var(--color-on-ink);
+  --carousel-control-bg: rgba(11, 16, 28, 0.45);
+  --carousel-control-border: rgba(255, 255, 255, 0.12);
+  --carousel-control-color: var(--color-on-ink);
+}
+
+.header {
+  margin-bottom: 5rem;
+  position: relative;
+}
+
+.title {
+  margin: 0 0 1.25rem;
+  font-family: var(--font-headline);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-size: 2.35rem;
+}
+
+.description {
+  margin: 0 0 2.5rem;
+  color: var(--color-on-surface-variant);
+  line-height: 1.75;
+  font-size: 1.1rem;
+  max-width: 40rem;
+}
+
+.card {
+  background: var(--color-surface-container-lowest);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  border: 1px solid rgba(199, 196, 215, 0.22);
+  min-height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+:root[data-theme='dark'] .card {
+  background: rgba(11, 16, 28, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cardIcon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-container);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:root[data-theme='dark'] .cardIcon {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cardTitle {
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+.cardSubtitle {
+  margin: 0.25rem 0 0;
+  color: var(--color-on-surface-variant);
+  font-size: 0.95rem;
+}
+
+:root[data-theme='dark'] .cardSubtitle {
+  color: rgba(218, 226, 253, 0.72);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: -0.5rem 0 1.25rem;
+}
+
+.cardDescription {
+  margin: 0 0 1.5rem;
+  color: var(--color-on-surface-variant);
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+
+:root[data-theme='dark'] .cardDescription {
+  color: rgba(218, 226, 253, 0.72);
+}
+
+.lines {
+  display: grid;
+  gap: 0.8rem;
+  margin-bottom: 1.25rem;
+}
+
+.lineFull,
+.lineThreeQuarter,
+.lineFiveSixth {
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--color-outline-variant) 30%, transparent);
+}
+
+:root[data-theme='dark'] .lineFull,
+:root[data-theme='dark'] .lineThreeQuarter,
+:root[data-theme='dark'] .lineFiveSixth {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lineThreeQuarter {
+  width: 75%;
+}
+
+.lineFiveSixth {
+  width: 83%;
+}
+
+.cardFooter {
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.meta {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: color-mix(in srgb, var(--color-on-surface-variant) 80%, transparent);
+}
+
+:root[data-theme='dark'] .meta {
+  color: rgba(218, 226, 253, 0.5);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--radius-full);
+  font-weight: 900;
+  font-size: 0.92rem;
+  background: linear-gradient(
+    180deg,
+    var(--color-primary-container),
+    var(--color-primary)
+  );
+  color: var(--color-on-primary);
+  box-shadow: 0 14px 44px rgba(70, 72, 212, 0.18);
+  transition:
+    transform 160ms ease,
+    opacity 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.cta:hover {
+  opacity: 0.95;
+}
+
+.cta:active {
+  transform: scale(0.98);
+}
+
+.linkDisabled {
+  color: color-mix(in srgb, var(--color-on-surface-variant) 70%, transparent);
+  font-weight: 900;
+  font-size: 0.95rem;
+}
+
+:root[data-theme='dark'] .linkDisabled {
+  color: rgba(218, 226, 253, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta {
+    transition: none;
+  }
+  .cta:active {
+    transform: none;
+  }
+}

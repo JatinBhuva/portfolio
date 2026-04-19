@@ -1,0 +1,79 @@
+:root {
+  --color-primary: #4648d4;
+  --color-primary-container: #6063ee;
+  --color-primary-fixed: #e1e0ff;
+  --color-on-primary: #ffffff;
+  --color-on-primary-fixed: #07006c;
+
+  --color-surface: #faf8ff;
+  --color-on-surface: #131b2e;
+  --color-on-surface-variant: #464554;
+  --color-on-background: #131b2e;
+  --color-surface-dim: #d2d9f4;
+  --color-surface-container-low: #f2f3ff;
+  --color-surface-container: #eaedff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-variant: #dae2fd;
+
+  --color-ink: #131b2e;
+  --color-on-ink: #eef0ff;
+
+  --color-outline: #767586;
+  --color-outline-variant: #c7c4d7;
+
+  --font-headline: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+
+  --radius-md: 1.5rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-full: 9999px;
+
+  --container-max: 80rem;
+  --container-pad: 3rem;
+  --nav-height: 5.25rem;
+
+  --shadow-ambient: 0 12px 60px rgba(19, 27, 46, 0.04);
+  --shadow-card: 0 10px 30px rgba(19, 27, 46, 0.06);
+  --shadow-card-hover: 0 14px 38px rgba(19, 27, 46, 0.09);
+
+  --grid-size: 24px;
+  --grid-dot-size: 1px;
+  --grid-dot-color: rgba(70, 72, 212, 0.14);
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --color-surface: #131b2e;
+  --color-on-surface: #eef0ff;
+  --color-on-background: #eef0ff;
+  --color-on-surface-variant: rgba(238, 240, 255, 0.72);
+
+  --color-ink: #0b1020;
+
+  --color-surface-dim: #0f1527;
+  --color-surface-container-low: #141d35;
+  --color-surface-container: #182241;
+  --color-surface-container-lowest: #1c284a;
+  --color-surface-variant: #24315c;
+
+  --color-outline: rgba(238, 240, 255, 0.36);
+  --color-outline-variant: rgba(199, 196, 215, 0.22);
+
+  --shadow-ambient: 0 12px 60px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.32);
+  --shadow-card-hover: 0 14px 38px rgba(0, 0, 0, 0.38);
+
+  --grid-dot-color: rgba(192, 193, 255, 0.16);
+
+  color-scheme: dark;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --container-pad: 1.25rem;
+  }
+}
