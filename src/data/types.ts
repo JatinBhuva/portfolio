@@ -44,6 +44,9 @@ export type Project = {
   tags: string[]
   image?: { src: string; alt: string }
   href?: string
+  highlights?: string[]
+  impact?: string[]
+  techStack?: string[]
 }
 
 export type Stat = {
@@ -62,6 +65,7 @@ export type FeaturedItem = {
   ctaLabel?: string
   href?: string
   icon?: string
+  emoji?: string
 }
 
 export type BlogPost = {

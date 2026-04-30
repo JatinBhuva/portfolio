@@ -23,11 +23,34 @@ export function CommunitySection() {
           renderSlide={(index) => {
             const item = community.items[index]
             const icon = item.icon ?? 'terminal'
-            return (
-              <article className={styles.card}>
+
+            const footer = (
+              <div className={styles.cardFooter}>
+                <span className={styles.metaWrap}>
+                  {item.metaLeft ? (
+                    <span className={styles.metaLabel}>{item.metaLeft}</span>
+                  ) : null}
+                  {item.meta ? (
+                    <span className={styles.metaValue}>{item.meta}</span>
+                  ) : null}
+                </span>
+                {item.href ? (
+                  <span className={styles.cta}>{item.ctaLabel ?? item.linkLabel}</span>
+                ) : (
+                  <span className={styles.linkDisabled}>{item.linkLabel}</span>
+                )}
+              </div>
+            )
+
+            const content = (
+              <>
                 <div className={styles.cardHeader}>
                   <div className={styles.cardIcon} aria-hidden>
-                    <Icon name={icon} />
+                    {item.emoji ? (
+                      <span className={styles.emoji}>{item.emoji}</span>
+                    ) : (
+                      <Icon name={icon} />
+                    )}
                   </div>
                   <div>
                     <h3 className={styles.cardTitle}>{item.title}</h3>
@@ -47,30 +70,23 @@ export function CommunitySection() {
                   <p className={styles.cardDescription}>{item.description}</p>
                 ) : null}
 
-                <div className={styles.lines} aria-hidden>
-                  <div className={styles.lineFull} />
-                  <div className={styles.lineThreeQuarter} />
-                  <div className={styles.lineFiveSixth} />
-                </div>
+                {footer}
+              </>
+            )
 
-                <div className={styles.cardFooter}>
-                  <span className={styles.meta}>
-                    {item.meta ?? item.metaLeft ?? ''}
-                  </span>
-                  {item.href ? (
-                    <a
-                      className={styles.cta}
-                      href={item.href}
-                      rel={isExternalHref(item.href) ? 'noreferrer' : undefined}
-                      target={isExternalHref(item.href) ? '_blank' : undefined}
-                    >
-                      {item.ctaLabel ?? item.linkLabel}
-                    </a>
-                  ) : (
-                    <span className={styles.linkDisabled}>{item.linkLabel}</span>
-                  )}
-                </div>
-              </article>
+            return (
+              item.href ? (
+                <a
+                  className={`${styles.card} ${styles.cardLink}`}
+                  href={item.href}
+                  rel={isExternalHref(item.href) ? 'noreferrer' : undefined}
+                  target={isExternalHref(item.href) ? '_blank' : undefined}
+                >
+                  {content}
+                </a>
+              ) : (
+                <article className={styles.card}>{content}</article>
+              )
             )
           }}
         />

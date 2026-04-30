@@ -55,6 +55,24 @@
   justify-content: space-between;
 }
 
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cardLink:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.cardLink:focus-visible {
+  outline: 3px solid rgba(70, 72, 212, 0.45);
+  outline-offset: 4px;
+}
+
 :root[data-theme='dark'] .card {
   background: rgba(11, 16, 28, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -109,38 +127,14 @@
   color: var(--color-on-surface-variant);
   line-height: 1.65;
   font-size: 0.95rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 :root[data-theme='dark'] .cardDescription {
   color: rgba(218, 226, 253, 0.72);
-}
-
-.lines {
-  display: grid;
-  gap: 0.8rem;
-  margin-bottom: 1.25rem;
-}
-
-.lineFull,
-.lineThreeQuarter,
-.lineFiveSixth {
-  height: 0.5rem;
-  border-radius: var(--radius-full);
-  background: color-mix(in srgb, var(--color-outline-variant) 30%, transparent);
-}
-
-:root[data-theme='dark'] .lineFull,
-:root[data-theme='dark'] .lineThreeQuarter,
-:root[data-theme='dark'] .lineFiveSixth {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.lineThreeQuarter {
-  width: 75%;
-}
-
-.lineFiveSixth {
-  width: 83%;
 }
 
 .cardFooter {
@@ -148,6 +142,29 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.metaWrap {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.metaLabel {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: color-mix(in srgb, var(--color-on-surface-variant) 80%, transparent);
+}
+
+.metaValue {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: color-mix(in srgb, var(--color-on-surface-variant) 80%, transparent);
+}
+
+:root[data-theme='dark'] .metaLabel,
+:root[data-theme='dark'] .metaValue {
+  color: rgba(218, 226, 253, 0.5);
 }
 
 .meta {
@@ -158,6 +175,11 @@
 
 :root[data-theme='dark'] .meta {
   color: rgba(218, 226, 253, 0.5);
+}
+
+.emoji {
+  font-size: 1.35rem;
+  line-height: 1;
 }
 
 .cta {
@@ -200,6 +222,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .cardLink {
+    transition: none;
+  }
+  .cardLink:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
   .cta {
     transition: none;
   }

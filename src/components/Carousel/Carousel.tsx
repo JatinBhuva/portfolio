@@ -94,13 +94,17 @@ export const Carousel = memo(function Carousel({
       const viewport = viewportRef.current
       if (!viewport) return
 
+      const target = event.target as HTMLElement | null
+      if (target?.closest('a,button,input,textarea,select,[role="button"]')) {
+        return
+      }
+
       pointerRef.current = {
         pointerId: event.pointerId,
         startX: event.clientX,
         startScrollLeft: viewport.scrollLeft,
-        isDragging: true,
+        isDragging: false,
       }
-      viewport.setPointerCapture(event.pointerId)
       setIsPaused(true)
     },
     [],
@@ -109,10 +113,14 @@ export const Carousel = memo(function Carousel({
   const onPointerMove = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
     const viewport = viewportRef.current
     const state = pointerRef.current
-    if (!viewport || !state?.isDragging) return
+    if (!viewport || !state) return
     if (event.pointerId !== state.pointerId) return
 
     const delta = event.clientX - state.startX
+    if (!state.isDragging) {
+      if (Math.abs(delta) < 6) return
+      state.isDragging = true
+    }
     viewport.scrollLeft = state.startScrollLeft - delta
   }, [])
 
@@ -122,15 +130,13 @@ export const Carousel = memo(function Carousel({
     if (!viewport || !state) return
     if (event.pointerId !== state.pointerId) return
 
+    const wasDragging = state.isDragging
     pointerRef.current = null
-    try {
-      viewport.releasePointerCapture(event.pointerId)
-    } catch {
-      // ignore
-    }
 
-    const index = getIndex()
-    scrollToIndex(index)
+    if (wasDragging) {
+      const index = getIndex()
+      scrollToIndex(index)
+    }
     setIsPaused(false)
   }, [getIndex, scrollToIndex])
 

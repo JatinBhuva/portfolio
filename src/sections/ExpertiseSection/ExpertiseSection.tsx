@@ -2,6 +2,7 @@ import { memo, useId, useMemo, useState } from 'react'
 import { Container } from '../../components/Container/Container'
 import { Icon } from '../../components/Icon/Icon'
 import { portfolio } from '../../data/portfolio'
+import type { StackItem } from '../../data/types'
 import styles from './ExpertiseSection.module.css'
 
 const StackCard = memo(function StackCard({
@@ -9,7 +10,7 @@ const StackCard = memo(function StackCard({
   description,
   icon,
   logo,
-}: (typeof portfolio.stack.items)[number]) {
+}: StackItem) {
   return (
     <div className={styles.card}>
       <div className={styles.iconWrap} aria-hidden>
@@ -62,11 +63,9 @@ export function ExpertiseSection() {
           <div className={styles.workList}>
             {items.map((item, index) => {
               const isOpen = openIndex === index
-              const projectsCount = item.projects?.length ?? 0
               const metaParts = [
                 `${item.start} — ${item.end}`,
                 item.location,
-                projectsCount > 0 ? `${projectsCount} project${projectsCount === 1 ? '' : 's'}` : undefined,
               ].filter(Boolean)
               const panelId = `${accordionId}-${index}`
 
@@ -116,54 +115,6 @@ export function ExpertiseSection() {
                           <li key={bullet}>{bullet}</li>
                         ))}
                       </ul>
-                    ) : null}
-
-                    {item.projects && item.projects.length > 0 ? (
-                      <div className={styles.projectGrid}>
-                        {item.projects.map((project) => (
-                          <div
-                            key={project.title}
-                            className={styles.projectCard}
-                          >
-                            {project.images && project.images.length > 0 ? (
-                              <div
-                                className={styles.projectGallery}
-                                aria-label={`${project.title} screenshots`}
-                              >
-                                {project.images.map((image) => (
-                                  <div
-                                    key={image.src}
-                                    className={styles.projectShot}
-                                  >
-                                    <img
-                                      alt={image.alt}
-                                      className={styles.projectShotImage}
-                                      decoding="async"
-                                      loading="lazy"
-                                      src={image.src}
-                                    />
-                                  </div>
-                                ))}
-                              </div>
-                            ) : null}
-                            <div className={styles.projectHeader}>
-                              <h4 className={styles.projectTitle}>
-                                {project.title}
-                              </h4>
-                              {project.subtitle ? (
-                                <p className={styles.projectSubtitle}>
-                                  {project.subtitle}
-                                </p>
-                              ) : null}
-                            </div>
-                            <ul className={styles.projectBullets}>
-                              {project.bullets.map((bullet) => (
-                                <li key={bullet}>{bullet}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
                     ) : null}
                   </div>
                 </article>

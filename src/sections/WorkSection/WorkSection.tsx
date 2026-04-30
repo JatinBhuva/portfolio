@@ -1,4 +1,5 @@
-import { memo, useMemo } from 'react'
+import { memo, useMemo, useState } from 'react'
+import { Button } from '../../components/Button/Button'
 import { Chip } from '../../components/Chip/Chip'
 import { Container } from '../../components/Container/Container'
 import { Icon } from '../../components/Icon/Icon'
@@ -15,6 +16,9 @@ const ProjectItem = memo(function ProjectItem({
   project: Project
   reversed: boolean
 }) {
+  const highlights = (project.highlights ?? []).slice(0, 4)
+  const impact = (project.impact ?? []).slice(0, 3)
+
   const media = (
     <div className={styles.media}>
       {project.image ? (
@@ -46,6 +50,23 @@ const ProjectItem = memo(function ProjectItem({
       ) : null}
       <h3 className={styles.projectTitle}>{project.title}</h3>
       <p className={styles.projectDescription}>{project.description}</p>
+      {highlights.length > 0 ? (
+        <ul className={styles.highlights} aria-label={`${project.title} highlights`}>
+          {highlights.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
+      ) : null}
+      {impact.length > 0 ? (
+        <div className={styles.impact} aria-label={`${project.title} impact`}>
+          <div className={styles.impactTitle}>Impact</div>
+          <ul className={styles.impactList}>
+            {impact.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
       {project.href ? (
         <a
           className={styles.caseLink}
@@ -79,6 +100,7 @@ const ProjectItem = memo(function ProjectItem({
 
 export function WorkSection() {
   const { work } = portfolio
+  const [showAll, setShowAll] = useState(false)
   const projects = useMemo(
     () =>
       work.projects.filter((project) => {
@@ -87,6 +109,10 @@ export function WorkSection() {
       }),
     [work.projects],
   )
+  const featuredCount = 4
+  const visibleProjects = showAll ? projects : projects.slice(0, featuredCount)
+  const indexProjects = showAll ? projects : projects.slice(0, featuredCount)
+  const remainingCount = Math.max(0, projects.length - featuredCount)
 
   return (
     <section className={styles.section} id="work">
@@ -95,14 +121,17 @@ export function WorkSection() {
           <h2 className={styles.title}>{work.title}</h2>
           <p className={styles.subtitle}>{work.description}</p>
           <div className={styles.projectIndex} aria-label="Projects">
-            {projects.map((project) => (
+            {indexProjects.map((project) => (
               <Chip key={project.title}>{project.title}</Chip>
             ))}
+            {!showAll && remainingCount > 0 ? (
+              <Chip>{`+${remainingCount} more`}</Chip>
+            ) : null}
           </div>
         </div>
 
         <div className={styles.list}>
-          {projects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <ProjectItem
               key={project.title}
               project={project}
@@ -110,6 +139,19 @@ export function WorkSection() {
             />
           ))}
         </div>
+
+        {projects.length > featuredCount ? (
+          <div className={styles.moreWrap}>
+            <Button
+              onClick={() => setShowAll((prev) => !prev)}
+              rightIcon={showAll ? 'expand_less' : 'expand_more'}
+              size="lg"
+              variant="secondary"
+            >
+              {showAll ? 'Show fewer projects' : 'View more projects'}
+            </Button>
+          </div>
+        ) : null}
       </Container>
     </section>
   )
