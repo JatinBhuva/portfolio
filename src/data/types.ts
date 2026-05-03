@@ -19,6 +19,7 @@ export type StackItem = {
   description: string
   icon?: string
   logo?: { src: string; alt: string; mode?: 'light' | 'dark' }
+  href?: string
 }
 
 export type WorkHistoryProject = {

@@ -28,34 +28,93 @@ export const portfolio: PortfolioData = {
     items: [
       {
         title: "React Native",
-        description:
-          "Building complex UI/UX with smooth 60fps animations and platform-aware optimizations.",
+        description: "React Native apps and UI engineering.",
         logo: {
           src: "https://reactnative.dev/img/header_logo.svg",
           alt: "React Native logo",
         },
+        href: "https://reactnative.dev/",
+      },
+      {
+        title: "JavaScript",
+        description: "Modern JavaScript for React Native and web.",
+        logo: {
+          src: "https://cdn.simpleicons.org/javascript/F7DF1E",
+          alt: "JavaScript logo",
+        },
+        href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+      },
+      {
+        title: "React.js",
+        description: "React for web interfaces and component-driven UI.",
+        logo: {
+          src: "https://cdn.simpleicons.org/react/61DAFB",
+          alt: "React logo",
+        },
+        href: "https://react.dev/",
       },
       {
         title: "TypeScript",
-        description:
-          "End-to-end type safety to reduce runtime errors and improve codebase health.",
-        icon: "code",
-      },
-      {
-        title: "Kotlin",
-        description:
-          "Native Android integrations, performance-sensitive modules, and clean platform abstractions.",
-        icon: "android",
-      },
-      {
-        title: "Redux Toolkit",
-        description:
-          "Predictable state management for complex flows, offline data, and scalable feature ownership.",
+        description: "Type-safe codebases and DX improvements.",
         logo: {
-          src: "https://redux-toolkit.js.org/img/redux_white.svg",
-          alt: "Redux Toolkit (Redux) logo",
-          mode: "light",
+          src: "https://www.typescriptlang.org/icons/icon-48x48.png",
+          alt: "TypeScript logo",
         },
+        href: "https://www.typescriptlang.org/",
+      },
+      {
+        title: "Redux",
+        description: "Predictable state management with Redux Toolkit.",
+        logo: {
+          src: "https://cdn.simpleicons.org/redux/764ABC",
+          alt: "Redux logo",
+        },
+        href: "https://redux.js.org/",
+      },
+      {
+        title: "XState",
+        description: "State machines for complex flows.",
+        logo: {
+          src: "https://cdn.simpleicons.org/xstate/2C5FFF",
+          alt: "XState logo",
+        },
+        href: "https://stately.ai/docs/xstate",
+      },
+      {
+        title: "Native Modules",
+        description: "Android/iOS native modules (TurboModules/JSI).",
+        logo: {
+          src: "https://cdn.simpleicons.org/android/3DDC84",
+          alt: "Android logo",
+        },
+        href: "https://reactnative.dev/docs/native-modules-intro",
+      },
+      {
+        title: "Firebase",
+        description: "Auth, messaging, analytics, and backend services.",
+        logo: {
+          src: "https://cdn.simpleicons.org/firebase/FFCA28",
+          alt: "Firebase logo",
+        },
+        href: "https://firebase.google.com/",
+      },
+      {
+        title: "Supabase",
+        description: "Postgres + Auth + Storage.",
+        logo: {
+          src: "https://cdn.simpleicons.org/supabase/3FCF8E",
+          alt: "Supabase logo",
+        },
+        href: "https://supabase.com/",
+      },
+      {
+        title: "MQTT",
+        description: "Real-time messaging for IoT apps.",
+        logo: {
+          src: "https://cdn.simpleicons.org/mqtt/660066",
+          alt: "MQTT logo",
+        },
+        href: "https://mqtt.org/",
       },
     ],
   },

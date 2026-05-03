@@ -5,30 +5,62 @@ import { portfolio } from '../../data/portfolio'
 import type { StackItem } from '../../data/types'
 import styles from './ExpertiseSection.module.css'
 
-const StackCard = memo(function StackCard({
-  title,
-  description,
-  icon,
-  logo,
-}: StackItem) {
-  return (
-    <div className={styles.card}>
-      <div className={styles.iconWrap} aria-hidden>
-        {logo ? (
+const StackCard = memo(function StackCard({ title, href, icon, logo }: StackItem) {
+  const showNativePair = title.toLowerCase() === 'native modules'
+
+  const content = (
+    <>
+      <div className={styles.stackIconWrap} aria-hidden>
+        {showNativePair ? (
+          <div className={styles.stackLogoPair}>
+            <img
+              alt=""
+              className={styles.stackLogo}
+              loading="lazy"
+              src="https://cdn.simpleicons.org/android/3DDC84"
+            />
+            <img
+              alt=""
+              className={styles.stackLogo}
+              loading="lazy"
+              src="https://cdn.simpleicons.org/apple/FFFFFF"
+              data-mode="light"
+            />
+          </div>
+        ) : logo ? (
           <img
-            alt={logo.alt}
-            className={styles.logo}
+            alt=""
+            className={styles.stackLogo}
             data-mode={logo.mode ?? 'dark'}
             loading="lazy"
             src={logo.src}
           />
         ) : icon ? (
-          <Icon className={styles.icon} name={icon} />
+          <Icon aria-hidden className={styles.stackIcon} name={icon} />
         ) : null}
       </div>
-      <h3 className={styles.cardTitle}>{title}</h3>
-      <p className={styles.cardDescription}>{description}</p>
-    </div>
+      <div className={styles.stackName}>{title}</div>
+    </>
+  )
+
+  if (!href) {
+    return (
+      <div className={styles.stackCard} aria-label={title}>
+        {content}
+      </div>
+    )
+  }
+
+  return (
+    <a
+      className={`${styles.stackCard} ${styles.stackLink}`}
+      href={href}
+      rel="noreferrer"
+      target="_blank"
+      aria-label={`Open ${title} website in a new tab`}
+    >
+      {content}
+    </a>
   )
 })
 

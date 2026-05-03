@@ -23,13 +23,21 @@ const ProjectItem = memo(function ProjectItem({
   const media = (
     <div className={styles.media}>
       {project.image ? (
-        <OptimizedImage
-          alt={project.image.alt}
-          className={styles.image}
-          loading="lazy"
-          sizes="(min-width: 900px) 58vw, 100vw"
-          src={project.image.src}
-        />
+        <a
+          aria-label={`Open ${project.title} image in a new tab`}
+          className={styles.mediaLink}
+          href={project.image.src}
+          rel="noreferrer"
+          target="_blank"
+        >
+          <OptimizedImage
+            alt={project.image.alt}
+            className={styles.image}
+            loading="lazy"
+            sizes="(min-width: 900px) 58vw, 100vw"
+            src={project.image.src}
+          />
+        </a>
       ) : (
         <div className={styles.placeholder} aria-hidden>
           <div className={styles.placeholderInner}>
