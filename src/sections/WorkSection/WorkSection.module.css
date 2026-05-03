@@ -36,6 +36,12 @@
   gap: 6rem;
 }
 
+@media (max-width: 640px) {
+  .list {
+    gap: 7.5rem;
+  }
+}
+
 .moreWrap {
   display: flex;
   justify-content: center;
@@ -43,18 +49,20 @@
 }
 
 .row {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 2.15rem;
   align-items: center;
 }
 
 .colMedia {
-  grid-column: 1 / -1;
+  width: 100%;
+  order: 2;
 }
 
 .colCopy {
-  grid-column: 1 / -1;
+  width: 100%;
+  order: 1;
 }
 
 .media {
@@ -226,6 +234,7 @@
 
 @media (min-width: 900px) {
   .row {
+    display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 3rem;
     align-items: center;
@@ -234,10 +243,12 @@
   .colMedia {
     grid-column: span 6;
     justify-self: start;
+    order: initial;
   }
 
   .colCopy {
     grid-column: span 6;
+    order: initial;
   }
 
   .row > .colMedia:last-child {
