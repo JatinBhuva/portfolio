@@ -3,6 +3,7 @@ import { Button } from '../../components/Button/Button'
 import { Chip } from '../../components/Chip/Chip'
 import { Container } from '../../components/Container/Container'
 import { Icon } from '../../components/Icon/Icon'
+import { OptimizedImage } from '../../components/OptimizedImage/OptimizedImage'
 import { portfolio } from '../../data/portfolio'
 import { isExternalHref } from '../../utils/isExternalHref'
 import styles from './WorkSection.module.css'
@@ -22,10 +23,11 @@ const ProjectItem = memo(function ProjectItem({
   const media = (
     <div className={styles.media}>
       {project.image ? (
-        <img
+        <OptimizedImage
           alt={project.image.alt}
           className={styles.image}
           loading="lazy"
+          sizes="(min-width: 900px) 58vw, 100vw"
           src={project.image.src}
         />
       ) : (
