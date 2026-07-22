@@ -5,14 +5,16 @@ import react from '@vitejs/plugin-react'
 export default defineConfig(() => {
   const env = (globalThis as unknown as { process?: { env?: Record<string, string | undefined> } })
     .process?.env
+  
   const repoName = env?.GITHUB_REPOSITORY?.split('/')[1]
   const isGitHubActions = env?.GITHUB_ACTIONS === 'true'
 
-  // If the repository name is your main user page, force the root base path '/'
-  const isUserPage = repoName?.toLowerCase() === `${env?.GITHUB_REPOSITORY?.split('/')[0]?.toLowerCase()}.github.io`
+  // Safely check if the repository name matches the format 'yourusername.github.io'
+  const isUserPage = repoName?.toLowerCase()?.endsWith('.github.io') === true
 
   return {
     plugins: [react()],
+    // If it's your main user page, force root '/'. Otherwise fallback to project subfolders.
     base: isGitHubActions && repoName && !isUserPage ? `/${repoName}/` : '/',
   }
 })
