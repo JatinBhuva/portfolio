@@ -13,8 +13,6 @@ export default defineConfig(() => {
 
   return {
     plugins: [react()],
-    // If it's your main user page, it must serve from root '/'. 
-    // Otherwise, fallback to the repository name subdirectory for project pages.
     base: isGitHubActions && repoName && !isUserPage ? `/${repoName}/` : '/',
   }
 })
