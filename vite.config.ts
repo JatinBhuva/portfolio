@@ -8,10 +8,13 @@ export default defineConfig(() => {
   const repoName = env?.GITHUB_REPOSITORY?.split('/')[1]
   const isGitHubActions = env?.GITHUB_ACTIONS === 'true'
 
+  // If the repository name is your main user page, force the root base path '/'
+  const isUserPage = repoName?.toLowerCase() === `${env?.GITHUB_REPOSITORY?.split('/')[0]?.toLowerCase()}.github.io`
+
   return {
     plugins: [react()],
-    // GitHub project pages are served from `/<repoName>/`.
-    // In Actions, set base automatically so asset URLs resolve correctly.
-    base: isGitHubActions && repoName ? `/${repoName}/` : '/',
+    // If it's your main user page, it must serve from root '/'. 
+    // Otherwise, fallback to the repository name subdirectory for project pages.
+    base: isGitHubActions && repoName && !isUserPage ? `/${repoName}/` : '/',
   }
 })
