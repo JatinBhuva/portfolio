@@ -85,7 +85,7 @@ export function ExpertiseSection() {
             <StackCard key={item.title} {...item} />
           ))}
         </div>
-
+{/* 
         <div className={styles.workHistory} aria-label={workHistory.title}>
           <div className={styles.workHeader}>
             <h3 className={styles.workTitle}>{workHistory.title}</h3>
@@ -153,7 +153,7 @@ export function ExpertiseSection() {
               )
             })}
           </div>
-        </div>
+        </div> */}
       </Container>
     </section>
   )
