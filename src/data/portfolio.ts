@@ -13,7 +13,7 @@ export const portfolio: PortfolioData = {
     heading: "Building high-performance mobile experiences.",
     highlight: "high-performance",
     description:
-      "A passionate and results-driven mobile app developer with 4+ years of experience designing, developing, and deploying high-quality React Native applications. I thrive in agile teams and love building scalable, user-first experiences across domains like social, finance, education, IoT, and healthcare.",
+      "A passionate and results-driven mobile app developer with 4.5+ years of experience designing, developing, and deploying high-quality React Native applications. I thrive in agile teams and love building scalable, user-first experiences across domains like social, finance, education, IoT, and healthcare.",
     primaryCta: { label: "View my work", href: "#work" },
     secondaryCta: { label: "About me", href: "#expertise" },
     image: {
