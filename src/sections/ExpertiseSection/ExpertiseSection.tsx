@@ -67,8 +67,8 @@ const StackCard = memo(function StackCard({ title, href, icon, logo }: StackItem
 export function ExpertiseSection() {
   const { stack, workHistory } = portfolio
   const [openIndex, setOpenIndex] = useState(0)
-  const accordionId = useId()
-  const items = useMemo(() => workHistory.items, [workHistory.items])
+  // const accordionId = useId()
+  // const items = useMemo(() => workHistory.items, [workHistory.items])
 
   return (
     <section className={styles.section} id="expertise">
